@@ -133,6 +133,17 @@ npm start
 
 ---
 
+## 🌐 GitHub Pages এবং লাইভ হোস্টিং সম্পর্কিত তথ্য
+
+### কেন GitHub Pages-এ সাদা স্ক্রিন (Blank Page) আসত এবং সমাধান:
+1. **অ্যাসেট পাথ (Vite Base Path):** GitHub Pages সাব-ফোল্ডারে হোস্ট হয় (`https://username.github.io/repo/`)। আমরা `vite.config.ts`-এ `base: './'` সেট করেছি, ফলে এখন আর অ্যাসেট 404 হবে না এবং UI সঠিকভাবে লোড হবে।
+2. **ব্যাকএন্ড সার্ভার (Node.js/Express):** মনে রাখবেন, GitHub Pages শুধুমাত্র স্ট্যাটিক HTML/CSS/JS হোস্ট করে। কিন্তু আমাদের সিস্টেমে আছে **Google Gemini AI Sales Agent, Telegram Group Webhook এবং Facebook Messenger Graph API** — যা চালানোর জন্য একটি ব্যাকএন্ড Node.js সার্ভার প্রয়োজন।
+3. **বিনামূল্যে ফুলস্ট্যাক হোস্ট করার উপায়:**
+   * **Render.com:** New Web Service → Connect GitHub Repo → Build Command: `npm install && npm run build` → Start Command: `npm start` (ফ্রি টায়ারে সম্পূর্ণ ব্যাকএন্ড ও টেলিগ্রাম বট লাইভ চলবে!)
+   * **Railway.app / Koyeb:** রিপো কানেক্ট করলেই অটোমেটিক ফুলস্ট্যাক ডিপ্লয় হয়ে যাবে।
+
+---
+
 ## 📱 ফেসবুক পেজ মেসেঞ্জার কানেক্ট করার নিয়ম
 
 1. **Meta for Developers** (`developers.facebook.com`) এ যান এবং একটি **Business App** তৈরি করুন।
