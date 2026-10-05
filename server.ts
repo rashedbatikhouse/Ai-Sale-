@@ -417,7 +417,7 @@ app.post('/api/clear-all-data', (req, res) => {
 app.get('/api/download-zip', (req, res) => {
   try {
     const zipPath = '/tmp/batik-shopping-ai-source.zip';
-    const pyCmd = `python3 -c "import os, zipfile; zip_path = '${zipPath}'; os.path.exists(zip_path) and os.remove(zip_path); zipf = zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED); [zipf.write(os.path.join(r, f), os.path.relpath(os.path.join(r, f), '.')) for r, d, files in os.walk('.') if not any(x in r for x in ['node_modules', '.git', 'dist', 'build', '.cache']) for f in files if not f.endswith('.log')]; zipf.close()"`;
+    const pyCmd = `python3 -c "import os, zipfile; zip_path = '${zipPath}'; os.path.exists(zip_path) and os.remove(zip_path); zipf = zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED); [zipf.write(os.path.join(r, f), os.path.relpath(os.path.join(r, f), '.')) for r, d, files in os.walk('.') if not any(p in ['node_modules', '.git', 'dist', 'build', '.cache'] for p in r.replace('\\\\\\\\', '/').split('/')) for f in files if not f.endswith('.log')]; zipf.close()"`;
     execSync(pyCmd);
     res.download(zipPath, 'batik-shopping-ai.zip');
   } catch (err: any) {
