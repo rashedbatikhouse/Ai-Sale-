@@ -1,0 +1,88 @@
+{
+  "products": [],
+  "customers": [],
+  "orders": [],
+  "order_status_history": [],
+  "telegram_groups": [
+    {
+      "id": "TG-GRP-1",
+      "group_name": "Batik Shopping — Product Management Group",
+      "group_id": "-1002489102381",
+      "group_type": "product_management",
+      "is_active": true
+    },
+    {
+      "id": "TG-GRP-2",
+      "group_name": "Batik Shopping — Order Notification Group",
+      "group_id": "-1002938102947",
+      "group_type": "order_notification",
+      "is_active": true
+    }
+  ],
+  "telegram_admins": [
+    {
+      "id": "TG-ADM-1",
+      "telegram_user_id": "184920491",
+      "username": "rashed_batik",
+      "display_name": "রাশেদ খান (Shop Owner)",
+      "role": "super_admin",
+      "is_authorized": true
+    },
+    {
+      "id": "TG-ADM-2",
+      "telegram_user_id": "928174012",
+      "username": "sales_lead_tanvir",
+      "display_name": "তানভীর আহমেদ (Product Ops)",
+      "role": "product_admin",
+      "is_authorized": true
+    }
+  ],
+  "telegram_messages": [],
+  "conversations": [],
+  "business_settings": {
+    "business_name": "Batik Shopping (ঘড়ের শপিং)",
+    "tagline": "শতভাগ খাঁটি ও আরামদায়ক সুতি বাটিকের বিশ্বস্ত ঠিকানা",
+    "phone": "01712-345678",
+    "email": "sales@ghorershopping.com",
+    "address": "দোকান # ১২, ইসলামপুর মার্কেট, ঢাকা-১১০০",
+    "about": "আমরা সরাসরি তাঁতি ও কারিগরদের থেকে সংগৃহীত খাঁটি মোম বাটিক, চুন্দ্রি বাটিক ও জয়পুরী কটন ড্রেস পাইকারি ও খুচরা সরবরাহ করি। রঙ শতভাগ পাকা ও কাপড়ের মান প্রিমিয়াম।",
+    "return_policy": "প্রোডাক্ট রিসিভ করার সময় ডেলিভারি ম্যানের সামনে দেখে চেক করবেন। রঙ, কাপড় বা কোনো ত্রুটি থাকলে ডেলিভারি চার্জ দিয়ে রিটার্ন করতে পারবেন। ব্যবহারের পর রিটার্ন গ্রহণযোগ্য নয়।",
+    "exchange_policy": "সাইজ বা কালার এক্সচেঞ্জ করতে চাইলে ডেলিভারির ৩ দিনের মধ্যে ইনবক্সে জানাতে হবে। প্রোডাক্ট অক্ষত অবস্থায় এক্সচেঞ্জ করে দেওয়া হবে।",
+    "payment_methods": "সারা দেশে ক্যাশ অন ডেলিভারি (Cash on Delivery)। এছাড়া বিকাশ ও নগদ মার্চেন্ট পেমেন্ট সুবিধা আছে।",
+    "business_hours": "প্রতিদিন সকাল ৯:০০ টা থেকে রাত ১১:০০ টা পর্যন্ত ইনবক্স ওপেন থাকে।"
+  },
+  "delivery_settings": {
+    "inside_dhaka_fee": 80,
+    "outside_dhaka_fee": 150,
+    "sub_dhaka_fee": 120,
+    "free_delivery_threshold": 4000,
+    "estimated_dhaka_days": "২ কার্যদিবস",
+    "estimated_outside_days": "৩-৪ কার্যদিবস"
+  },
+  "ai_settings": {
+    "model_name": "gemini-3.8-flash",
+    "system_prompt": "You are the friendly, professional, and natural Bengali AI Sales Assistant for 'Batik Shopping (ঘড়ের শপিং)'.\nYou chat naturally with customers in Bengali (or friendly Banglish if the customer prefers).\nCRITICAL RULES:\n1. ALWAYS use the provided tool data as the absolute source of truth.\n2. NEVER invent product names, prices, colors, stock availability, discounts, delivery fees, or store policies.\n3. If information is unavailable or uncertain, politely state that you are escalating to our human support team.\n4. ORDER COLLECTION WORKFLOW:\n   - When a customer wants to buy ('অর্ডার করতে চাই' / 'আমি এটা নিব' / 'order'), politely collect:\n     a) Product name & chosen Color\n     b) Quantity (সংখ্যা)\n     c) Customer full name (নাম)\n     d) 11-digit Bangladeshi mobile number (মোবাইল নম্বর)\n     e) District (জেলা), Thana/Upazila (থানা), Area/Village (এলাকা), and Full street address (সম্পূর্ণ ঠিকানা)\n   - Do NOT ask for information the customer has already supplied! Collect remaining details step-by-step naturally.\n5. EXPLICIT ORDER CONFIRMATION RULE:\n   - Before confirming an order, calculate Subtotal + Delivery fee and present the COMPLETE final order summary:\n     আপনার অর্ডারের তথ্য:\n     নাম: [Customer Name]\n     মোবাইল: [Mobile Number]\n     প্রোডাক্ট: [Product Name]\n     কালার: [Chosen Color]\n     পরিমাণ: [Quantity]\n     জেলা: [District]\n     থানা: [Thana]\n     এলাকা: [Area]\n     সম্পূর্ণ ঠিকানা: [Full Address]\n     Subtotal: ৳[Subtotal]\n     ডেলিভারি চার্জ: ৳[Delivery Fee]\n     সর্বমোট: ৳[Total]\n     আপনার অর্ডারটি কি Confirm করবেন?\n   - Wait for EXPLICIT customer confirmation ('হ্যাঁ', 'জি', 'অর্ডার করেন', 'Confirm', 'ঠিক আছে', 'নিশ্চিত').\n   - Once confirmed, invoke 'confirm_order' and 'send_order_to_telegram_group'.\n6. HUMAN HANDOFF:\n   - If customer asks to speak with a human/admin ('মানুষের সাথে কথা বলতে চাই', 'অ্যাডমিন এর সাথে কথা বলব', 'representative চাই'), invoke 'handoff_to_human'.",
+    "temperature": 0.3,
+    "communication_style": "friendly_natural_bangla",
+    "auto_confirm_explicit_only": true
+  },
+  "telegram_settings": {
+    "bot_token": "7481920491:AAH8j-fake-bot-token-demo",
+    "bot_username": "BatikSalesAgentBot",
+    "product_group_id": "-1002489102381",
+    "product_group_name": "Batik Shopping — Product Management",
+    "order_group_id": "-1002938102947",
+    "order_group_name": "Batik Shopping — Order Notification",
+    "authorized_admin_ids": "184920491,928174012",
+    "is_connected": true
+  },
+  "facebook_settings": {
+    "page_id": "102938475610293",
+    "page_name": "Batik Shopping — ঘরোয়া কালেকশন",
+    "access_token": "EAA...",
+    "verify_token": "batik_sales_agent_secret_verify_token",
+    "webhook_url": "https://ais-dev-hwvk7aghbn7xm6lsy6toqg-68211469209.asia-southeast1.run.app/api/webhook/facebook",
+    "is_connected": true
+  },
+  "order_counter": 1
+}

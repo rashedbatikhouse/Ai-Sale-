@@ -1,0 +1,6 @@
+{
+  "name": "Batik Shopping AI Sales Agent",
+  "description": "AI-powered automated sales & order system for Facebook Messenger with Telegram Product & Order Management Groups and Admin Dashboard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
